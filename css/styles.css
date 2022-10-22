@@ -2,7 +2,7 @@
   --primary-text-color: #757575;
   --title-text-color: #212121;
   --accent-color: #2196f3;
-  --hero-btn-hover-color: #188ce8;
+  --btn-hover-color: #188ce8;
   --header-border-color: #ececec;
   --logo-header-color: #000000;
   --primbg-secondbtn-logofooter-address-color: #ffffff;
@@ -95,6 +95,19 @@ textarea {
 
 .link {
   text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
 
 /* -------------header-------------- */
@@ -280,7 +293,7 @@ textarea {
 
 .hero-btn:hover,
 .hero-btn:focus {
-  background: var(--hero-btn-hover-color);
+  background: var(--btn-hover-color);
   box-shadow: var(--btn-box-shadow);
 }
 
@@ -291,19 +304,6 @@ textarea {
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
-}
-
-.visually-hidden {
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  margin: -1px;
 }
 
 .feature-list,
@@ -658,6 +658,10 @@ textarea {
   color: var(--primbg-secondbtn-logofooter-address-color);
 }
 
+.footer-form-items {
+  display: flex;
+}
+
 .footer-form-input {
   padding-left: 16px;
   width: 358px;
@@ -684,6 +688,13 @@ textarea {
 }
 
 .footer-form-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-right: 28px;
+  padding-left: 28px;
+
   margin-left: 12px;
   width: 200px;
   height: 50px;
@@ -691,11 +702,13 @@ textarea {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
+  letter-spacing: 0.06em;
 
   background: var(--accent-color);
   box-shadow: var(--btn-box-shadow);
   border-radius: 4px;
   color: var(--primbg-secondbtn-logofooter-address-color);
+  cursor: pointer;
 
   border: transparent;
   outline: transparent;
@@ -703,8 +716,13 @@ textarea {
 
 .footer-form-btn:hover,
 .footer-form-btn:focus {
-  background: var(--hero-btn-hover-color);
+  background: var(--btn-hover-color);
   box-shadow: var(--btn-box-shadow);
+}
+
+.footer-icon-send {
+  margin-left: 10px;
+  fill: var(--primbg-secondbtn-logofooter-address-color);
 }
 
 /* ---------------Modal---------------- */
@@ -791,19 +809,9 @@ textarea {
   color: var(--title-text-color);
 }
 
-/* .form-make-order {
-  width: 100%;
-} */
-
-/* .form-field {
-  gap: 10px;
-} */
-
-/* .form-field-item {
-  display: flex;
-  flex-direction: column;
+.form-field-item {
   margin-bottom: 10px;
-} */
+}
 
 .form-field-item-name {
   margin-bottom: 4px;
@@ -814,18 +822,38 @@ textarea {
   color: var(--primary-text-color);
 }
 
-.form-field-input {
-  padding-left: 12px;
-  width: 100%;
-  height: 40px;
-  border: 1px solid var(--form-make-order-fld-border-color);
-  border-radius: 4px;
-  margin-bottom: 10px;
+.form-field-input-wrap {
+  position: relative;
 }
 
-/* .form-field-input:focus {
-  border: var(--accent-color);
-} */
+.form-field-input {
+  padding-left: 42px;
+  width: 100%;
+  height: 40px;
+
+  border: 1px solid var(--form-make-order-fld-border-color);
+  border-radius: 4px;
+  outline: transparent;
+
+  transition-property: border;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+
+.form-field-input:focus {
+  border: 1px solid var(--accent-color);
+}
+
+.form-field-input:focus + .form-field-icon {
+  fill: var(--accent-color);
+}
+
+.form-field-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+}
 
 .form-field-textarea {
   padding-left: 16px;
@@ -838,12 +866,121 @@ textarea {
 
   border: 1px solid var(--form-make-order-fld-border-color);
   border-radius: 4px;
+  outline: transparent;
 
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.01em;
 
   color: var(--form-make-order-placeholder-color);
+}
+
+.form-field-textarea:focus {
+  border: 1px solid var(--accent-color);
+  color: var(--title-text-color);
+}
+
+.form-condition-text {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 30px;
+
+  color: var(--primary-text-color);
+
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+}
+
+.form-condition-text .condition-check {
+  width: 16px;
+  height: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+
+  border: 2px solid var(--icon-close-color-hover);
+  border-radius: 2px;
+
+  fill: transparent;
+
+  transition-property: border, background-color, fill;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+
+.input-check:checked + .form-condition-text .condition-check {
+  border: 2px solid transparent;
+  background-color: var(--accent-color);
+  fill: var(--primbg-secondbtn-logofooter-address-color);
+}
+
+.input-check:focus + .form-condition-text .condition-check {
+  border: 2px solid var(--accent-color);
+}
+
+.condition-text-link {
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  text-decoration-line: underline;
+
+  color: var(--accent-color);
+}
+
+/* .form-condition-text::before {
+  content: "";
+  width: 16px;
+  height: 15px;
+
+  display: block;
+  margin-right: 8px;
+
+  border: 2px solid var(--icon-close-color-hover);
+  border-radius: 2px;
+
+  transition-property: border, background-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+
+.input-check:checked + .form-condition-text::before {
+  border: 2px solid transparent;
+  background-color: var(--accent-color);
+  background-image: url(../images/check.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.form-field-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 50px;
+  background: var(--accent-color);
+  box-shadow: var(--btn-box-shadow);
+  border-radius: 4px;
+  border: transparent;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  color: var(--primbg-secondbtn-logofooter-address-color);
+  cursor: pointer;
+
+  transition-property: background;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+
+.form-field-btn:hover,
+.form-field-btn:focus {
+  background: var(--btn-hover-color);
 }
 
 /* -------------PORTFOLIO------------- */
