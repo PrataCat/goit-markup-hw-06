@@ -712,12 +712,15 @@ textarea {
 
   border: transparent;
   outline: transparent;
+
+  transition-property: background;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
 }
 
 .footer-form-btn:hover,
 .footer-form-btn:focus {
   background: var(--btn-hover-color);
-  box-shadow: var(--btn-box-shadow);
 }
 
 .footer-icon-send {
@@ -873,6 +876,10 @@ textarea {
   letter-spacing: 0.01em;
 
   color: var(--form-make-order-placeholder-color);
+
+  transition-property: border, color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
 }
 
 .form-field-textarea:focus {
